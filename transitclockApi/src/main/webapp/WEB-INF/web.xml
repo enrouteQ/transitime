@@ -39,7 +39,6 @@
 	  
 <!-- Swagger v3 -->
 
-
   <servlet>
     <servlet-name>jersey</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>

@@ -1,0 +1,47 @@
+name: 'transitclock'
+services:
+  core:
+    image: mcr.microsoft.com/devcontainers/java:17
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    links:
+      - database
+
+  api:
+    image: mcr.microsoft.com/devcontainers/java:17
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    ports:
+      - "8080:8080"
+    links:
+      - core
+      - database
+    # ...
+  database:
+    image: postgres
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=p4ssword!
+  # web:
+  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
+  #   volumes:
+  #     # Mount the root folder that contains .git
+  #     - .:/workspace:cached
+  #   command: sleep infinity
+  #   links:
+  #     - gateway
+
+  # organisation:
+  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
+  #   volumes:
+  #     # Mount the root folder that contains .git
+  #     - .:/workspace:cached
+  #   command: sleep infinity
+  #   links:
+  #     - gateway

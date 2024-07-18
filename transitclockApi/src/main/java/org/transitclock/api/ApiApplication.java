@@ -22,7 +22,8 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 
 /**
- * Declares that all classes in package org.transitclock.api.rootResources will be
+ * Declares that all classes in package org.transitclock.api.rootResources will
+ * be
  * searched for being a root-resource class with methods annotated with @Path
  * indicating that it handles requests.
  *
@@ -34,9 +35,10 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("v1")
 public class ApiApplication extends ResourceConfig {
 
-	public ApiApplication() {
-		// Register all root-resource classes in package that handle @Path
-		// requests
-		packages("org.transitclock.api.rootResources");
-	}
+  public ApiApplication() {
+    super();
+    // Register all root-resource classes in package that handle @Path
+    // requests
+    property("jersey.config.server.provider.packages", "org.transitclock.api.rootResources");
+  }
 }

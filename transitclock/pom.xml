@@ -92,7 +92,11 @@
 			<artifactId>esri-geometry-api</artifactId>
 			<version>1.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-jaxrs2</artifactId>
+			<version>2.0.2</version>
+		</dependency>
 
 		<!-- Database related, including c3p0 production quality connector. Note: 
 			have found that can have problems if don't use similar versions. Can have 

@@ -1,0 +1,75 @@
+{
+  "name": "Transit Clock API",
+  "dockerComposeFile": [
+    "../../docker-compose.yml"
+  ],
+  "shutdownAction": "none",
+  "service": "api",
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "containerEnv": {},
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached" 
+  ],
+  "postCreateCommand": "zsh /workspace/.devcontainer/transitclock.api/post-create.zsh",
+  "forwardPorts": [8080],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "vscode",
+      "uid": "1000",
+      "gid": "1000",
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": false,
+      "upgradePackages": true
+    },
+    "github-cli": "latest",
+    "ghcr.io/devcontainers/features/terraform": "latest",
+    "ghcr.io/devcontainers/features/aws-cli": "latest"
+  },
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "extensions.verifySignature": false,
+        "editor.fontFamily": "Roboto Mono for Powerline",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "zsh"
+          },
+          "fish": {
+            "path": "fish"
+          },
+          "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+          },
+          "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+          }
+        },
+        "editor.formatOnSave": true,
+        "spring-boot.ls.java.home": "/usr/local/openjdk-11"
+      },
+      "extensions": [
+        "GitHub.copilot",
+        "gabrielbb.vscode-lombok",
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "redhat.vscode-community-server-connector"
+      ]
+    }
+  }
+}

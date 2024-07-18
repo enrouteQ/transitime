@@ -1,0 +1,28 @@
+name: 'transitclock'
+services:
+  core:
+    image: mcr.microsoft.com/devcontainers/java:17
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    # ...
+  api:
+    image: mcr.microsoft.com/devcontainers/java:17
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+  # web:
+  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
+  #   volumes:
+  #     # Mount the root folder that contains .git
+  #     - .:/workspace:cached
+  #   command: sleep infinity
+
+  # organisation:
+  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
+  #   volumes:
+  #     # Mount the root folder that contains .git
+  #     - .:/workspace:cached
+  #   command: sleep infinity
