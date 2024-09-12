@@ -5,3 +5,9 @@
 infrastructure
 */target
 Dockerfile
+/bin/
+/.settings/
+.DS_Store
+tomcat-logs/
+transit-logs/
+logs/

@@ -12,3 +12,6 @@
 /.settings/
 .DS_Store
 .m2/
+tomcat-logs/
+transit-logs/
+logs/
