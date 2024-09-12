@@ -1,26 +1,33 @@
 name: 'transitclock'
 services:
   core:
-    image: mcr.microsoft.com/devcontainers/java:17
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: core
     volumes:
-      # Mount the root folder that contains .git
-      - .:/workspace:cached
-    command: sleep infinity
+      - ./configs:/usr/local/transitclock/config
+      - ./logs:/usr/local/transitclock/logs
+    command: core
     links:
       - database
 
   api:
-    image: mcr.microsoft.com/devcontainers/java:17
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: web
     volumes:
-      # Mount the root folder that contains .git
-      - .:/workspace:cached
-    command: sleep infinity
+      - ./configs:/usr/local/transitclock/config
+      - ./web-logs:/Logs
+      - ./tomcat-logs:/usr/local/tomcat/logs
+    command: catalina
     ports:
       - "8080:8080"
     links:
       - core
       - database
-    # ...
+
   database:
     image: postgres
     shm_size: 128mb
@@ -28,20 +35,3 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=p4ssword!
-  # web:
-  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
-  #   volumes:
-  #     # Mount the root folder that contains .git
-  #     - .:/workspace:cached
-  #   command: sleep infinity
-  #   links:
-  #     - gateway
-
-  # organisation:
-  #   image: mcr.microsoft.com/devcontainers/typescript-node:20
-  #   volumes:
-  #     # Mount the root folder that contains .git
-  #     - .:/workspace:cached
-  #   command: sleep infinity
-  #   links:
-  #     - gateway

@@ -1,0 +1,7 @@
+.vscode
+.devcontainer
+.m2
+.github
+infrastructure
+*/target
+Dockerfile

@@ -103,7 +103,7 @@ public class TripPattern implements Serializable, Lifecycle {
 	@Column(length=HibernateUtils.DEFAULT_ID_SIZE)
 	private final String routeId;
 	
-	@Column(length=80)
+	@Column(length=100)
 	private final String routeShortName;
 	
 	// So know lat lon range of the trip pattern 
