@@ -9,8 +9,6 @@ services:
       - ./configs:/usr/local/transitclock/config
       - ./logs:/usr/local/transitclock/logs
     command: core
-    links:
-      - database
 
   api:
     build:
@@ -26,12 +24,4 @@ services:
       - "8080:8080"
     links:
       - core
-      - database
 
-  database:
-    image: postgres
-    shm_size: 128mb
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=p4ssword!
